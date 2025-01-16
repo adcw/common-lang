@@ -1,22 +1,19 @@
 from dataclasses import asdict, is_dataclass, fields
-from typing import Type, TypeVar
+from typing import Type, TypeVar, Dict
 import yaml
 
 T = TypeVar("T")
 
-def _dict_to_dataclass(data: dict, cls: Type[T]) -> T:
+def _dict_to_dataclass(data: Dict, cls: Type[T]) -> T:
     """
-    Convert a dictionary to a dataclass instance.
+    Convert a dictionary to a dataclass instance, supporting nested dataclasses.
 
     Args:
-        data (dict): The dictionary containing the datasets.
-        cls (Type[T]): The dataclass type to convert the dictionary to.
+        data (dict): Dictionary to be converted.
+        cls (Type[T]): The target dataclass type.
 
     Returns:
-        T: An instance of the specified dataclass type.
-
-    Raises:
-        TypeError: If the provided class is not a dataclass.
+        T: An instance of the specified dataclass.
     """
     if not is_dataclass(cls):
         raise TypeError(f"{cls} is not a dataclass")
@@ -27,9 +24,16 @@ def _dict_to_dataclass(data: dict, cls: Type[T]) -> T:
         field_type = field.type
         value = data.get(field_name)
 
-        # Recursive handling for nested datacls
         if is_dataclass(field_type) and isinstance(value, dict):
+            # Recursive call for nested dataclasses
             init_args[field_name] = _dict_to_dataclass(value, field_type)
+        elif isinstance(value, list) and hasattr(field_type, "__origin__") and field_type.__origin__ is list:
+            # Handle lists of nested dataclasses
+            element_type = field_type.__args__[0]
+            if is_dataclass(element_type):
+                init_args[field_name] = [_dict_to_dataclass(item, element_type) if isinstance(item, dict) else item for item in value]
+            else:
+                init_args[field_name] = value
         else:
             init_args[field_name] = value
 
