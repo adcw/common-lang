@@ -3,7 +3,7 @@ import os
 import inquirer
 
 from src.session.datacls import Config
-from src.session.datacls.modes import MODE
+from src.session.datacls.mode import MODE
 
 
 def query_mode() -> MODE:

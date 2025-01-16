@@ -1,5 +1,5 @@
 from src.session.datacls import Config
-from src.session.datacls.modes import MODE
+from src.session.datacls.mode import MODE
 from src.session.session_manager.utils import query_mode, validate_config
 from src.utils.yaml import load_config
 
