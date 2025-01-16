@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import List
 
 
+@dataclass
 class SplitsCfg:
     present_perc: float = 0.4
     max_modalities_to_drop: int = 1
@@ -10,6 +11,6 @@ class SplitsCfg:
 
 @dataclass
 class Config:
-    dataset_paths: List[str]
+    modality_paths: List[str]
     splits: SplitsCfg
     runs_path: str
