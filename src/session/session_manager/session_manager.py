@@ -1,3 +1,4 @@
+from src.session.data_prep import prepare_data
 from src.session.datacls import Config
 from src.session.datacls.mode import MODE
 from src.session.session_manager.utils import query_mode, validate_config
@@ -29,22 +30,23 @@ class SessionManager:
         mode = query_mode()
 
         if mode == MODE.TRAIN:
-            self.train()
+            self.train_helper()
         elif mode == MODE.PREPARE_DATA:
-            self.prepare_data()
+            self.prepare_data_helper()
         elif mode == MODE.EXIT:
             print("Exiting the application.")
         else:
             raise NotImplementedError(f"The mode '{mode}' is not implemented.")
 
-    def train(self):
+    def train_helper(self):
         """
         Placeholder method for the training action.
         """
         print("Training process started...")
 
-    def prepare_data(self):
+    def prepare_data_helper(self):
         """
         Placeholder method for preparing data.
         """
         print("Preparing data started...")
+        prepare_data(self.config)

@@ -31,9 +31,9 @@ def validate_config(config: Config):
         FileNotFoundError: If the datasets path does not exist.
         FileNotFoundError: If the output path does not exist.
     """
-    for path in config.dataset_paths:
+    for path in config.modality_paths:
         if not os.path.exists(path):
-            raise FileNotFoundError(f"The datasets path is invalid: {config.dataset_paths}")
+            raise FileNotFoundError(f"The datasets path is invalid: {config.modality_paths}")
 
     if not os.path.exists(config.runs_path):
         raise FileNotFoundError(f"The output path does not exist: {config.runs_path}")
