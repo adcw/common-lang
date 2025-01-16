@@ -1,5 +1,6 @@
-from src.datacls import ConfigModel
-from src.session.utils import query_action, validate_config
+from src.session.datacls import Config
+from src.session.datacls.modes import MODE
+from src.session.session_manager.utils import query_mode, validate_config
 from src.utils.yaml import load_config
 
 
@@ -13,7 +14,7 @@ class SessionManager:
         Args:
             config_filepath (str): Path to the configuration file.
         """
-        config = load_config(config_filepath, ConfigModel)
+        config = load_config(config_filepath, Config)
         validate_config(config)
         self.config = config
 
@@ -25,16 +26,16 @@ class SessionManager:
             NotImplementedError: If the selected option is not implemented.
         """
 
-        action = query_action()
+        mode = query_mode()
 
-        if action == "train":
+        if mode == MODE.TRAIN:
             self.train()
-        elif action == "test":
-            self.test()
-        elif action == "exit":
+        elif mode == MODE.PREPARE_DATA:
+            self.prepare_data()
+        elif mode == MODE.EXIT:
             print("Exiting the application.")
         else:
-            raise NotImplementedError(f"The action '{action}' is not implemented.")
+            raise NotImplementedError(f"The mode '{mode}' is not implemented.")
 
     def train(self):
         """
@@ -42,8 +43,8 @@ class SessionManager:
         """
         print("Training process started...")
 
-    def test(self):
+    def prepare_data(self):
         """
-        Placeholder method for the testing action.
+        Placeholder method for preparing data.
         """
-        print("Testing process started...")
+        print("Preparing data started...")

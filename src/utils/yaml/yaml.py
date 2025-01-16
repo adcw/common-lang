@@ -9,7 +9,7 @@ def _dict_to_dataclass(data: dict, cls: Type[T]) -> T:
     Convert a dictionary to a dataclass instance.
 
     Args:
-        data (dict): The dictionary containing the data.
+        data (dict): The dictionary containing the datasets.
         cls (Type[T]): The dataclass type to convert the dictionary to.
 
     Returns:

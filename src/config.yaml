@@ -1,2 +1,10 @@
-data_path: D:\Projekty\common-lang\data\acc_phone_clip
-output_path: D:\Projekty\common-lang\runs
+dataset_paths:
+  - D:\Projekty\common-lang\datasets\acc_phone_clip
+  - D:\Projekty\common-lang\datasets\gyro_clip
+
+runs_path: D:\Projekty\common-lang\runs
+
+splits:
+  present_perc: 0.4
+  max_modalities_to_drop: 1
+  modality_drop_perc: 0.2
