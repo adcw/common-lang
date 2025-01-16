@@ -1,4 +1,4 @@
-dataset_paths:
+modality_paths:
   - D:\Projekty\common-lang\datasets\acc_phone_clip
   - D:\Projekty\common-lang\datasets\gyro_clip
 
