@@ -1,8 +1,11 @@
+import os.path
+
 from src.session.data_prep import prepare_data
 from src.session.datacls import Config
 from src.session.datacls.mode import MODE
 from src.session.session_manager.utils import query_mode, validate_config
 from src.utils.yaml import load_config
+from src.utils.rundir import new_run_dir
 
 
 class SessionManager:
@@ -48,5 +51,7 @@ class SessionManager:
         """
         Placeholder method for preparing data.
         """
+        new_run_dir(os.path.join("prepared", self.config.runs_path))
+
         print("Preparing data started...")
         prepare_data(self.config)
