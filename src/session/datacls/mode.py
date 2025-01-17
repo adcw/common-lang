@@ -1,7 +1,7 @@
 from enum import Enum
 
 class MODE(Enum):
-    PREPARE_DATA = "prepare data"
+    GENERATE_ZARR = "generate zarr"
     TRAIN = "train"
     EXIT = "exit"
 

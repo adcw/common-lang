@@ -6,7 +6,7 @@ from src.session.datacls import Config
 from src.utils.rundir.run_dir import get_run_dir
 
 
-def prepare_data(cf: Config):
+def generate_zarr_dataset(cf: Config):
     run_dir = get_run_dir()
 
     num_cases = 1000

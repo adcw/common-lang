@@ -1,11 +1,12 @@
 import os.path
 
-from src.session.data_prep import prepare_data
 from src.session.datacls import Config
 from src.session.datacls.mode import MODE
 from src.session.session_manager.utils import query_mode, validate_config
-from src.utils.yaml import load_config
+
 from src.utils.rundir import new_run_dir
+from src.utils.yaml import load_config
+from src.utils.zarr import generate_zarr_dataset
 
 
 class SessionManager:
@@ -34,8 +35,8 @@ class SessionManager:
 
         if mode == MODE.TRAIN:
             self.train_helper()
-        elif mode == MODE.PREPARE_DATA:
-            self.prepare_data_helper()
+        elif mode == MODE.GENERATE_ZARR:
+            self.generate_zarr_helper()
         elif mode == MODE.EXIT:
             print("Exiting the application.")
         else:
@@ -47,11 +48,11 @@ class SessionManager:
         """
         print("Training process started...")
 
-    def prepare_data_helper(self):
+    def generate_zarr_helper(self):
         """
         Placeholder method for preparing data.
         """
         new_run_dir(os.path.join(self.config.runs_path, "zarr"))
 
-        print("Preparing data started...")
-        prepare_data(self.config)
+        print("Generating zarr dataset...")
+        generate_zarr_dataset(self.config)

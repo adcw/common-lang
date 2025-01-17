@@ -11,7 +11,7 @@ def query_mode() -> MODE:
         inquirer.List(
             "mode",
             message="Select mode",
-            choices=[MODE.PREPARE_DATA.value, MODE.TRAIN.value],
+            choices=[MODE.GENERATE_ZARR.value, MODE.TRAIN.value],
         )
     ]
 
