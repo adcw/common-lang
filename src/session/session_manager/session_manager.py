@@ -51,7 +51,7 @@ class SessionManager:
         """
         Placeholder method for preparing data.
         """
-        new_run_dir(os.path.join("prepared", self.config.runs_path))
+        new_run_dir(os.path.join(self.config.runs_path, "zarr"))
 
         print("Preparing data started...")
         prepare_data(self.config)
