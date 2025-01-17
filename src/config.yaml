@@ -1,6 +1,10 @@
 modality_paths:
-  - D:\Projekty\common-lang\datasets\acc_phone_clip
-  - D:\Projekty\common-lang\datasets\gyro_clip
+  - D:\Projekty\common-lang\data\raw\acc_phone_clip
+  - D:\Projekty\common-lang\data\raw\gyro_clip
+
+modality_names:
+  - acc_phone_clip
+  - gyro_clip
 
 runs_path: D:\Projekty\common-lang\runs
 

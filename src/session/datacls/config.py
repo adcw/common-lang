@@ -12,5 +12,8 @@ class SplitsCfg:
 @dataclass
 class Config:
     modality_paths: List[str]
-    splits: SplitsCfg
+    modality_names: List[str]
+
     runs_path: str
+
+    splits: SplitsCfg
