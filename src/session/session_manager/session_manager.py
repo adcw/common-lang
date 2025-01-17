@@ -6,7 +6,7 @@ from src.session.session_manager.utils import query_mode, validate_config
 
 from src.utils.rundir import new_run_dir
 from src.utils.yaml import load_config
-from src.utils.zarr import generate_zarr_dataset
+from src.session.zarr import generate_zarr_dataset
 
 
 class SessionManager:
