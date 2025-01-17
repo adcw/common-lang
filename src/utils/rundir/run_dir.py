@@ -1,13 +1,11 @@
 import os.path
 from datetime import datetime
 
-
 __run_dir = None
 
 
 def new_run_dir(root: str):
-    if not os.path.exists(root):
-        raise OSError(f"Directory {root} does not exist.")
+    os.makedirs(root, exist_ok=True)
 
     global __run_dir
 
